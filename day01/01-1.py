@@ -1,4 +1,4 @@
-# Advent of Code Day 1
+# Advent of Code Day 1 - Part 1
 
 # Step 1 - read in file
 with open ('./cases/set2', 'r') as casefile:
@@ -14,10 +14,13 @@ for line in lines:
     set1.append(var[0])
     set2.append(var[1])
 
+
+#Step 3 - Sort the lists
 set1.sort()
 set2.sort()
 
 
+#Set 4 - Find distance scores
 distances = []
 
 counter = 0
