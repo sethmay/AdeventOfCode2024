@@ -1,15 +1,14 @@
 # Advent of Code Day 1 - Part 1
 
 # Step 1 - read in file
-with open ('./cases/set2', 'r') as casefile:
-    lines = casefile.read().splitlines()
+with open ('../../AdventOfCode2024_Inputs/day01/inputs2.txt', 'r') as inputfile:
+    inputList = inputfile.read().splitlines()
 
 # Step 2 - Split into two lists
-
 set1 = []
 set2 = []
 
-for line in lines:
+for line in inputList:
     var = line.split("   ")
     set1.append(var[0])
     set2.append(var[1])
