@@ -3,7 +3,7 @@ import math
 from enum import Enum
 from pathlib import Path
 
-class bcolors:
+class Colors:
     BLUE = '\033[94m'
     CYAN = '\033[96m'
     GREEN = '\033[92m'
@@ -13,6 +13,14 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+    # print (Colors.BLUE + "Blue" + Colors.ENDC)
+    # print (Colors.CYAN + "Cyan" + Colors.ENDC)
+    # print (Colors.GREEN + "Green" + Colors.ENDC)
+    # print (Colors.RED + "Red" + Colors.ENDC)
+    # print (Colors.PURPLE + "Purple" + Colors.ENDC)
+    # print (Colors.YELLOW + "Yellow" + Colors.ENDC)
+    # print (Colors.BOLD + "Bold" + Colors.ENDC)
+    # print (Colors.UNDERLINE + "Underline" + Colors.ENDC)
 
 def find_distance(item1, item2):
     return abs(int(item1) - int(item2))
