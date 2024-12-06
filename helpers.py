@@ -55,3 +55,9 @@ def is_increasing2(numlist):
         i += 1
 
     return True
+
+def make_2d_list (input):
+    output = []
+    for line in input:
+        output.append(list(line))
+    return output
