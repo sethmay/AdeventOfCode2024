@@ -26,7 +26,7 @@ def search_map (map, item):
         col = 0
     return (False, False)
 
-def in_inbounds (map, row, col):
+def is_inbounds (map, row, col):
     return 0 <= row < len(map) and 0 <= col < len(map[row])
 
 def get_next_pos (direction, row, col):
@@ -43,18 +43,15 @@ def get_next_pos (direction, row, col):
         #print(row, col, row, col-1, direction)
         return [row, col-1]
 
-def is_next_inbounds (map, direction, row, col):
-    row_count = len(map)
-    col_count = len(map[0])
-
+def is_next_step_inbounds (map, direction, row, col):
     next_row, next_col = get_next_pos(direction, row, col)
 
-    if 0 <= next_row < row_count and 0 <= next_col < col_count:
+    if is_inbounds(map, next_row, next_col):
         return True
     return False
 
 def has_obstacle (map, direction, row, col):
-    if is_next_inbounds(map, direction, row, col):
+    if is_next_step_inbounds(map, direction, row, col):
         next_row, next_col = get_next_pos(direction, row, col)
         if map[next_row][next_col] == '#':
             return True
@@ -118,7 +115,7 @@ def solve (input_data):
     cols = len(path_map[0])
 
     # Run the initial path so I know which positions should be in my test set
-    while is_next_inbounds(path_map, person_dir, person_row, person_col):
+    while is_next_step_inbounds(path_map, person_dir, person_row, person_col):
         if (has_obstacle(path_map, person_dir, person_row, person_col)):
             person_dir, person_icon = turn_90_degrees(person_dir, person_dir)
 
@@ -135,9 +132,9 @@ def solve (input_data):
 
     while row < rows:
         while col < cols:
-            blocker_spots.append([row, col])
-            # if path_map[row][col] == 'X':
-            #     blocker_spots.append([row, col])
+            #blocker_spots.append([row, col])
+            if path_map[row][col] == 'X':
+                blocker_spots.append([row, col])
             col += 1
         row += 1
         col = 0
@@ -169,7 +166,7 @@ def solve (input_data):
         path = [] # used to track the coord/direction of each step taken
 
         # follow the guard until they go out of bounds OR they start looping
-        while is_next_inbounds(test_path_map, person_dir, person_row, person_col):
+        while is_next_step_inbounds(test_path_map, person_dir, person_row, person_col):
             if has_walked_this_path(path, person_row, person_col, person_dir):
                 looping_path_count += 1
                 #print_map(test_path_map)
