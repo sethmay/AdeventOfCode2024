@@ -48,6 +48,7 @@ def is_next_step_inbounds (map, direction, row, col):
 
     if is_inbounds(map, next_row, next_col):
         return True
+    #print ('next step is out of bounds', next_row, next_col, ', map size: ', len(map), len(map[1]))
     return False
 
 def has_obstacle (map, direction, row, col):
@@ -132,9 +133,10 @@ def solve (input_data):
 
     while row < rows:
         while col < cols:
-            #blocker_spots.append([row, col])
+            # get only the positions previously traversed
             if path_map[row][col] == 'X':
                 blocker_spots.append([row, col])
+            #blocker_spots.append([row, col])  # check using -every- map location (bruteforce)
             col += 1
         row += 1
         col = 0
@@ -154,8 +156,8 @@ def solve (input_data):
 
     # Build a new map for each spot to test
     for pos_row, pos_col in blocker_spots:
-        # if attempt % 1000 == 0:
-        #     print ('attempt:', attempt, 'of', blocker_spot_count)
+        if attempt % 1000 == 0:
+            print ('attempt:', attempt, 'of', blocker_spot_count)
         test_path_map = copy.deepcopy(input_data) # generate a clean map
         test_path_map[pos_row][pos_col] = '#' # mark the new obstacle
         step_counter = 0
@@ -163,22 +165,30 @@ def solve (input_data):
         person_col = start_col  # these are static for all maps, so use them recorded above
         person_dir = 'n'
         person_icon = '^'
-        path = [] # used to track the coord/direction of each step taken
+        visited = dict()
 
         # follow the guard until they go out of bounds OR they start looping
         while is_next_step_inbounds(test_path_map, person_dir, person_row, person_col):
-            if has_walked_this_path(path, person_row, person_col, person_dir):
+            if (person_row, person_col, person_dir) in visited:
                 looping_path_count += 1
                 #print_map(test_path_map)
-                print('attempt:', attempt, '/', blocker_spot_count, '- loop', looping_path_count, 'found, steps:', step_counter)
+                #print('attempt:', attempt, '/', blocker_spot_count, '- loop', looping_path_count, 'found, steps:', step_counter)
                 break
 
             # track the path before taking next step
-            path.append([person_row, person_col, person_dir])
+            visited[(person_row, person_col, person_dir)] = True
 
-            # If they are blocked, turn
-            if (has_obstacle(test_path_map, person_dir, person_row, person_col)):
+            # If they are blocked, turn. Could be blocked in multiple directions.
+            obstacle_count = 0
+            while has_obstacle(test_path_map, person_dir, person_row, person_col):
+                obstacle_count += 1
                 person_dir, person_icon = turn_90_degrees(person_dir, person_dir)
+
+                if (obstacle_count == 4):
+                    looping_path_count += 1
+                    # print_map(test_path_map)
+                    # print('attempt:', attempt, '/', blocker_spot_count, '- loop', looping_path_count, 'found, steps:', step_counter)
+                    break
 
 
             # move forward one step
