@@ -97,3 +97,19 @@ class Colors:
     # print (Colors.YELLOW + "Yellow" + Colors.ENDC)
     # print (Colors.BOLD + "Bold" + Colors.ENDC)
     # print (Colors.UNDERLINE + "Underline" + Colors.ENDC)
+
+
+def time_solution(func, *args, **kwargs):
+    start_time = time.time()
+    result = func(*args, **kwargs)
+    end_time = time.time()
+
+    execution_time_sec = (end_time - start_time)
+    execution_time_ms = execution_time_sec * 1_000
+    execution_time_us = execution_time_sec * 1_000_000
+
+    print(f"Execution time:")
+    print(f"  - {execution_time_sec:.3f} sec")
+    print(f"  - {execution_time_ms:.2f} ms")
+    print(f"  - {math.ceil(execution_time_us)} µs")
+    return result
