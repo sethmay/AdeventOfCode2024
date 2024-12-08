@@ -4,7 +4,7 @@ from collections import namedtuple
 sys.path.append("../helpers.py")
 from helpers import *
 
-#input_data = load_input(7, InputType.MAIN).splitlines()
+# input_data = load_input(7, InputType.MAIN).splitlines()
 input_data = load_input(7, InputType.EXAMPLE).splitlines()
 input_results = []
 input_parts = []
@@ -63,7 +63,7 @@ def solve (input_results, input_parts):
         needed_iterations = 2 ** (len(input_parts[i]) - 1) # 2^len-1
 
         bperms = get_binary_iterations(len(input_parts[i]))
-        print (bperms)
+        #print (bperms)
 
         # cycle through every number in the set
         k = 0

@@ -4,18 +4,6 @@ from collections import namedtuple
 sys.path.append("../helpers.py")
 from helpers import *
 
-input_data = load_input(7, InputType.MAIN).splitlines()
-# input_data = load_input(7, InputType.EXAMPLE).splitlines()
-input_results = []
-input_parts = []
-
-for line in input_data:
-    results, parts = line.split(":")
-    input_results.append(results)
-    input_parts.append(parts.split())
-
-
-# print(input_results, input_parts)
 
 
 # Build the binary map of operators
@@ -142,9 +130,25 @@ def solve(input_results, input_parts):
 
     print('num solvable:', solvable_results)
     print('sum of all solvable:', sum_of_results)
+    return sum_of_results
 
+
+################################################################################
+
+input_data = load_input(7, InputType.MAIN).splitlines()
+# input_data = load_input(7, InputType.EXAMPLE).splitlines()
+input_results = []
+input_parts = []
+
+for line in input_data:
+    results, parts = line.split(":")
+    input_results.append(results)
+    input_parts.append(parts.split())
+
+
+# print(input_results, input_parts)
 
 result = time_solution(solve, input_results, input_parts)
-#solve(input_results, input_parts)
+print(f"Result: {result}")
 
 

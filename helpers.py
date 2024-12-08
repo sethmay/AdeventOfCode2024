@@ -108,7 +108,8 @@ def time_solution(func, *args, **kwargs):
     execution_time_ms = execution_time_sec * 1_000
     execution_time_us = execution_time_sec * 1_000_000
 
-    print(f"Execution time:")
+    print()
+    print(Colors.green("Execution time:"))
     print(f"  - {execution_time_sec:.3f} sec")
     print(f"  - {execution_time_ms:.2f} ms")
     print(f"  - {math.ceil(execution_time_us)} µs")
