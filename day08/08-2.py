@@ -149,8 +149,8 @@ def solve(map):
 # Main
 ################################################################################
 
-input_data = make_2d_list(load_input(8, InputType.MAIN).splitlines())
-# input_data = make_2d_list(load_input(8, InputType.EXAMPLE).splitlines())
+# input_data = make_2d_list(load_input(8, InputType.MAIN).splitlines())
+input_data = make_2d_list(load_input(8, InputType.EXAMPLE).splitlines())
 
 
 

@@ -114,3 +114,10 @@ def time_solution(func, *args, **kwargs):
     print(f"  - {execution_time_ms:.2f} ms")
     print(f"  - {math.ceil(execution_time_us)} µs")
     return result
+
+
+def is_even(num):
+    return num % 2 == 0
+
+def is_odd(num):
+    return not(is_even(num))
