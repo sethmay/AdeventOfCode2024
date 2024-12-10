@@ -137,8 +137,8 @@ def solve(input):
 # Main
 ################################################################################
 
-input_data = load_input(9, InputType.MAIN)
-# input_data = load_input(9, InputType.EXAMPLE)
+# input_data = load_input(9, InputType.MAIN)
+input_data = load_input(9, InputType.EXAMPLE)
 
 
 result = time_solution(solve, input_data)

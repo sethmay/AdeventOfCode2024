@@ -51,8 +51,8 @@ def build_space_map(input):
         while j < length:
             if is_even(i):
                 #print (fileid, int(input[i]), location)
-                map.append(Block(fileid, int(i/2), length, location))
-                #map.append(Block(fileid, input[i], location))
+                #map.append(Block(fileid, int(i/2), length, location))
+                map.append(Block(fileid, input[i], length, location))
             else:
                 #print(fileid, '', location)
                 map.append(Block('', '', 0, location))
@@ -70,7 +70,7 @@ def find_first_open_space(map, length, block_start):
     spaces_open = 0
     space_open_index = 0
     i = 0
-    while i < len(map) and i < block_start:
+    while i < len(map) and i <= block_start:
         if (map[i].value == ''):
             spaces_open += 1
             #print(spaces_open, length)
@@ -128,19 +128,19 @@ def calculate_result(map):
     for block in map:
         if (block.value != ''):
             #print(int(block.location), '*', int(block.value), '=', int(block.value) * int(block.location) )
-            result += int(block.value) * int(block.location)
+            result += int(block.id) * int(block.location)
     return result
 
 
 # guesses:
 # 6361381088795 - Too high
-#
+# 6361380647183 - Correct
 def solve(input):
     map = build_space_map(input)
     map = defrag(map)
 
-    print_map(map)
-    print(map)
+    #print_map(map)
+    #print(map)
 
 
     return calculate_result(map)
