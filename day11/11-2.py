@@ -108,7 +108,7 @@ def solve(input_data):
     for item in input_data:
         stones.append(item)
 
-    blinks = 6
+    blinks = 25
     blink_count = 1
     print_start = 6
     print_end = 6
