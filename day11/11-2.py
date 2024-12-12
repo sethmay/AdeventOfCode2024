@@ -9,7 +9,6 @@ from helpers import *
 # Functional logic
 ################################################################################
 
-
 @cache
 def count_stones(value, depth=75):
     if depth == 0:
@@ -55,8 +54,8 @@ def solve(input_data):
 # Main
 ################################################################################
 
-input_data = load_input(11, InputType.MAIN).split(' ')
-# input_data = load_input(11, InputType.EXAMPLE).split(' ')
+# input_data = load_input(11, InputType.MAIN).split(' ')
+input_data = load_input(11, InputType.EXAMPLE).split(' ')
 
 
 result = time_solution(solve, input_data)
