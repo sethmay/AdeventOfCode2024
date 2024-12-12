@@ -39,7 +39,7 @@ def count_stones(value, depth=75):
 # 216318908621637 - Correct
 
 def solve(input_data):
-    blinks = 75
+    blinks = 996
 
     stone_count = 0
     for stone in input_data:
@@ -54,8 +54,10 @@ def solve(input_data):
 # Main
 ################################################################################
 
-# input_data = load_input(11, InputType.MAIN).split(' ')
-input_data = load_input(11, InputType.EXAMPLE).split(' ')
+# 125 17
+# 8435 234 928434 14 0 7 92446 8992692
+input_data = load_input(11, InputType.MAIN).split(' ')
+# input_data = load_input(11, InputType.EXAMPLE).split(' ')
 
 
 result = time_solution(solve, input_data)
